@@ -7,6 +7,18 @@
     <title>cherish learning app</title>
   </head>
   <body>
+    <script>
+      (function () {
+        let docEle = document.documentElement;
+        function setRemUnit() {
+          //把根元素fontSize的值设置为了屏幕宽度的十分之一像素（容易计算）
+          //如果屏幕宽度是750px, 1rem=100рх。iphone6的屏幕宽度是375px，所以1rem=50px
+          docEle.style.fontSize = docEle.clientWidth / 10 + "px";
+        }
+        setRemUnit();
+        window.addEventListener("resize", setRemUnit);
+      })();
+    </script>
     <div id="root"></div>
   </body>
 </html>
