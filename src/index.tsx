@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
 import { ConfigProvider } from "antd";
@@ -11,6 +11,7 @@ import Mine from "./routes/Mine";
 import Profile from "./routes/Profile";
 import { ConnectedRouter } from "connected-react-router";
 import history from "@/history";
+import Tabs from "@/components/Tabs";
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
@@ -22,6 +23,7 @@ ReactDOM.render(
             <Route path="/profile" exact component={Profile} />
           </Switch>
         </main>
+        <Tabs />
       </ConfigProvider>
     </ConnectedRouter>
   </Provider>,

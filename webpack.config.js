@@ -51,17 +51,45 @@ module.exports = {
         },
       },
       {
-        enforce: "pre",
-        test: /\.(j|t)sx?$/,
-        loader: "source-map-loader",
-      },
-      {
         test: /\.css$/,
-        use: ["style-loader"],
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: { importLoaders: 0 },
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              plugins: [require("autoprefixer")],
+            },
+          },
+        ],
       },
       {
         test: /\.less$/,
-        use: ["style-loader", "css-loader", "less-loader"],
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: { importLoaders: 0 },
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              plugins: [require("autoprefixer")],
+            },
+          },
+          {
+            loader: "px2rem-loader",
+            options: {
+              remUnit: 75,
+              remPrecesion: 8,
+            },
+          },
+          "less-loader",
+        ],
+        // exclude: /node_modules/
       },
       {
         test: /\.(jpg|png|gif|svg|jpeg)$/,
