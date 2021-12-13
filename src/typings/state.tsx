@@ -1,11 +1,9 @@
-import  { HomeState } from '@/store/reducers/home';
-import  { MineState } from '@/store/reducers/mine';
-import  { ProfileState } from '@/store/reducers/profile';
-import {  RouterState } from 'connected-react-router';
+import { RouterState } from "connected-react-router";
+import { HomeState, MineState, ProfileState } from ".";
 
 export interface CombinedState {
-  home: HomeState,
-  mine: MineState,
-  profile: ProfileState,
-  router: RouterState
+  home: HomeState;
+  mine: MineState;
+  profile: ProfileState;
+  router: RouterState;
 }

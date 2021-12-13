@@ -1,11 +1,10 @@
+import { ProfileState } from "@/typings";
 import { AnyAction } from "redux";
 
-export interface ProfileState {
-
-}
-const initialState: ProfileState = {
-  
-}
-export default function (state:ProfileState= initialState, action: AnyAction) {
-  return state
+const initialState: ProfileState = {};
+export default function (
+  state: ProfileState = initialState,
+  action: AnyAction
+) {
+  return state;
 }
