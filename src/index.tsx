@@ -1,30 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Routes, Route, useRoutes, BrowserRouter } from "react-router-dom";
-import { ConnectedRouter } from "connected-react-router";
+import { Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
+import store from "./store";
 import { ConfigProvider } from "antd";
 import zh_CN from "antd/lib/locale-provider/zh_CN";
-import { Home, Mine, Profile } from "./routes/index";
-import store from "./store";
-import history from "@/history";
 import "./assets/style/common.less";
-const App = () => {
-  let routes = useRoutes([
-    { path: "/", element: <Home /> },
-    { path: "mine", element: <Mine /> },
-    { path: "/profile", element: <Profile /> },
-  ]);
-  return routes;
-};
+import Home from "./routes/Home"; //routes路由组件 一个组件对应一个页面 页面组件
+import Mine from "./routes/Mine";
+import Profile from "./routes/Profile";
+import { ConnectedRouter } from "connected-react-router";
+import history from "@/history";
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <ConfigProvider locale={zh_CN}>
         <main className="main-container">
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/mine" exact component={Mine} />
+            <Route path="/profile" exact component={Profile} />
+          </Switch>
         </main>
       </ConfigProvider>
     </ConnectedRouter>

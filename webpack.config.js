@@ -12,7 +12,7 @@ module.exports = {
   devtool: "source-map",
   devServer: {
     hot: true, //热更新插件
-    static: path.join(__dirname, "dist"),
+    contentBase: path.join(__dirname, "dist"),
     historyApiFallback: {
       //browserHistory的时候，刷新会报404. 自动重定向到index.html
       index: "./index.html",
