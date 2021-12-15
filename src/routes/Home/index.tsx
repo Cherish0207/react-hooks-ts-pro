@@ -14,7 +14,10 @@ type Props = PropsWithChildren<
 function Home(props: Props) {
   return (
     <>
-      <HomeHeader />
+      <HomeHeader
+        currentCategory={props.currentCategory}
+        setCurrentCategory={props.setCurrentCategory}
+      />
     </>
   );
 }
