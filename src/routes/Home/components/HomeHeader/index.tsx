@@ -14,6 +14,12 @@ interface Props {
 }
 function HomeHeader(props: Props) {
   let [isMenuVisible, setIsMenuVisible] = useState(false);
+  const setCurrentCategory = (event: React.MouseEvent<HTMLUListElement>) => {
+    let target: HTMLUListElement = event.target as HTMLUListElement; //强转类型
+    let category = target.dataset.category;
+    props.setCurrentCategory(category);
+    setIsMenuVisible(false);
+  };
   return (
     <header className="home-header">
       <div className="logo-header">
@@ -21,7 +27,7 @@ function HomeHeader(props: Props) {
         <Icon type="bars" onClick={() => setIsMenuVisible(!isMenuVisible)} />
       </div>
       {isMenuVisible && (
-        <ul className="category">
+        <ul className="category" onClick={setCurrentCategory}>
           <li
             data-category="all"
             className={classnames({
